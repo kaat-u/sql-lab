@@ -86,3 +86,105 @@ WHERE City = (
 	FROM Customers
 	WHERE CustomerID = 'ALFKI'
 );
+
+------------------------------------------------
+--                   pag 18
+------------------------------------------------
+SELECT *
+FROM Products
+WHERE CategoryID <> (
+	SELECT CategoryID
+	FROM Categories
+	WHERE CategoryName = 'Beverages'
+);
+
+------------------------------------------------
+--                   pag 19
+------------------------------------------------
+SELECT *
+FROM Customers c
+WHERE EXISTS (
+	SELECT *
+	FROM Orders o
+	WHERE o.CustomerID = c.CustomerID
+	  AND o.OrderID = ANY (
+		SELECT OrderID
+		FROM [Order Details]
+		WHERE Quantity > 20
+	)
+);
+
+------------------------------------------------
+--                   pag 20
+------------------------------------------------
+SELECT *
+FROM Customers c
+WHERE EXISTS (
+	SELECT *
+	FROM Orders o
+	WHERE o.CustomerID = c.CustomerID
+	  AND o.OrderID = SOME (
+		SELECT OrderID
+		FROM [Order Details]
+		WHERE Quantity < 10
+	)
+);
+
+------------------------------------------------
+--                   pag 21
+------------------------------------------------
+SELECT *
+FROM Customers c
+WHERE NOT EXISTS (
+	SELECT *
+	FROM Orders o
+	WHERE o.CustomerID = c.CustomerID
+	  AND o.OrderID <> ALL (
+		SELECT OrderID
+		FROM [Order Details]
+		WHERE Quantity >= 10
+	)
+);
+
+------------------------------------------------
+--                   pag 22
+------------------------------------------------
+SELECT p.ProductName, c.CategoryName
+FROM Products p
+LEFT JOIN Categories c
+	ON p.CategoryID = c.CategoryID
+		OR (p.CategoryID IS NULL AND c.CategoryID IS NULL)
+WHERE (c.CategoryNAME IS DISTINCT FROM 'Beverages')
+   OR (c.CategoryNAME IS NULL AND 'Beverages' IS NULL);
+
+------------------------------------------------
+--                   pag 31
+------------------------------------------------
+SELECT *
+FROM Customers
+WHERE EXISTS (SELECT *
+				FROM Orders
+				WHERE Orders.CustomerID = Customers.CustomerID);
+
+------------------------------------------------
+--                   pag 32
+------------------------------------------------
+SELECT CategoryID
+FROM Products p
+WHERE EXISTS (
+	SELECT * FROM [Order Details] od
+	WHERE od.ProductID = p.ProductID
+	AND od.Quantity >= 10
+);
+
+------------------------------------------------
+--                   pag 33
+------------------------------------------------
+SELECT *
+FROM Customers
+JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+WHERE EXISTS (SELECT *
+			  FROM Employees
+			 WHERE Employees.EmployeeID = Orders.EmployeeID
+			   AND Employees.Title = 'Sales Representative'
+);
