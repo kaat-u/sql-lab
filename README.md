@@ -24,6 +24,6 @@ Laboratorios del curso de Programación Avanzada de Base de Datos, usando SQL Se
 - SQL Server
 - SQL Server Management Studio (SSMS)
 
-## Autor
+## Curso
 
-[kaat-u](https://github.com/kaat-u)
+Programación Avanzada de Base de Datos
