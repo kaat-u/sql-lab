@@ -17,12 +17,13 @@ Laboratorios del curso de Programación Avanzada de Base de Datos, usando SQL Se
 | `execution-plans.sql` | Planes de ejecución |
 | `northwind-db.sql` | Consultas sobre la base Northwind |
 | `biblioteca-db.sql` | Consultas sobre base de datos de biblioteca |
+| `security-permissions.sql` | Logins, roles y permisos de acceso |
 
 ## Tecnología
 
 - SQL Server
 - SQL Server Management Studio (SSMS)
 
-## Autor
+## Curso
 
-[kaat-u](https://github.com/kaat-u)
+Programación Avanzada de Base de Datos
