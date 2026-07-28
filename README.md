@@ -18,6 +18,7 @@ Laboratorios del curso de Programación Avanzada de Base de Datos, usando SQL Se
 | `northwind-db.sql` | Consultas sobre la base Northwind |
 | `biblioteca-db.sql` | Consultas sobre base de datos de biblioteca |
 | `security-permissions.sql` | Logins, roles y permisos de acceso |
+| `backups.sql` | Copias de seguridad (backups) |
 
 ## Tecnología
 
